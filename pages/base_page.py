@@ -16,3 +16,9 @@ class BasePage:
         except NoSuchElementException:
             return False
         return True
+
+    def is_link_fit(self, url):
+        if url in self.browser.current_url:
+            return True
+        else:
+            return False
