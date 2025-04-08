@@ -14,7 +14,7 @@ class ProductPage(BasePage):
     def check_message_about_item_in_basket(self):
         item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME_H1).text
         item_name_in_basket = self.browser.find_element(*ProductPageLocators.MESSAGE_WITH_ITEM_NAME_DIV).text
-        assert item_name in item_name_in_basket, "Item name doesn't match item name in basket"
+        assert item_name == item_name_in_basket, "Item name doesn't match item name in basket"
 
 
     def check_basket_price_message(self):
