@@ -30,5 +30,8 @@ class LoginPage(BasePage):
         register_button = self.browser.find_element(*LoginPageLocators.REGISTER_REGISTER_BUTTON)
         register_button.click()
 
-        assert "login" not in self.browser.current_url and self.is_element_present(*LoginPageLocators.REGISTER_SUCCESS_MESSAGE), "New user registration is failed"
+        assert "login" not in self.browser.current_url and self.is_element_present(*LoginPageLocators.REGISTER_SUCCESS_MESSAGE), \
+            ("New user registration is failed"
+             "PROBABLY email is not unique"
+             "Try again")
 

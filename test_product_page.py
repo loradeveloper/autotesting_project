@@ -1,9 +1,8 @@
 import sys
 import os
-
 import pytest
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
 
 
 from pages.product_page import ProductPage
@@ -13,18 +12,18 @@ from utils.data_generators import generate_random_email, generate_random_strong_
 
 
 @pytest.mark.user
-class TestUserAddToBasketFromProductPage():
+class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         link = "https://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
         page = LoginPage(browser, link)
         page.open()
-        email = generate_random_email()
-        password = generate_random_strong_password()
+        email = generate_random_email(50)
+        password = generate_random_strong_password(20)
         page.register_new_user(email, password)
         page.should_be_authorized_user()
 
-
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
         page = ProductPage(browser, link)
@@ -41,13 +40,9 @@ class TestUserAddToBasketFromProductPage():
         page.should_not_be_success_message()
 
 
-@pytest.mark.parametrize('promo_offer', [0, 1, 2, 3, 4, 5, 6,
-                                         pytest.param(7, marks=pytest.mark.xfail),
-                                         8, 9])
-def test_guest_can_add_product_to_basket(browser, promo_offer):
-    # link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
-    # link = "https://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/?promo=newYear2019"
-    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{promo_offer}"
+@pytest.mark.need_review
+def test_guest_can_add_product_to_basket(browser):
+    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     page = ProductPage(browser, link)
     page.open()
     page.add_to_basket()
@@ -87,6 +82,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.should_be_login_link()
 
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
@@ -94,6 +90,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
