@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class MainPageLocators:
@@ -21,6 +22,7 @@ class LoginPageLocators:
     REGISTER_PASSWORD_INPUT = (By.CSS_SELECTOR, "#id_registration-password1")
     REGISTER_CONFIRM_PASSWORD_INPUT = (By.CSS_SELECTOR, "#id_registration-password2")
     REGISTER_REGISTER_BUTTON = (By.CSS_SELECTOR, "button[name='registration_submit']")
+    REGISTER_SUCCESS_MESSAGE = (By.CSS_SELECTOR, "div[class='alertinner wicon']")
 
 
 class ProductPageLocators:
