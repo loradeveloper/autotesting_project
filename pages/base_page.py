@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from pages.locators import BasePageLocators
+from pages.locators import BasePageLocators, BasketPageLocators
 
 
 class BasePage:
@@ -68,6 +68,11 @@ class BasePage:
 
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*BasketPageLocators.GO_TO_BASKET_PAGE_LINK)
         link.click()
 
 

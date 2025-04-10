@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 
 
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
+
 class MainPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
@@ -28,5 +32,7 @@ class ProductPageLocators:
     BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "header div.basket-mini:nth-child(2)")
 
 
-class BasePageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+class BasketPageLocators:
+    GO_TO_BASKET_PAGE_LINK = (By.CSS_SELECTOR, "span.btn-group a[class='btn btn-default']")
+    BASKET_EMPTY_MESSAGE_P = (By.CSS_SELECTOR, "#content_inner > p")
+    BASKET_SUMMARY_FORM = (By.CSS_SELECTOR, "#basket_formset")
