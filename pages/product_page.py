@@ -8,7 +8,7 @@ class ProductPage(BasePage):
     def add_to_basket(self):
         basket = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         basket.click()
-        self.solve_quiz_and_get_code()
+        # self.solve_quiz_and_get_code()
 
     def check_message_about_item_in_basket(self):
         item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME_H1).text

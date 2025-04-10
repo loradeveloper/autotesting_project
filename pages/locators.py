@@ -26,3 +26,7 @@ class ProductPageLocators:
     SUCCESS_MESSAGE_DIV = (By.CSS_SELECTOR, "#messages div[class='alert alert-safe alert-noicon alert-success  fade in'] div.alertinner strong")
     ITEM_PRICE_P = (By.CSS_SELECTOR, "div.product_main p.price_color")
     BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "header div.basket-mini:nth-child(2)")
+
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
